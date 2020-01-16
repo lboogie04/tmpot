@@ -9,9 +9,16 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    # super
+    Rails.logger.info "Signing in..."
+    Rails.logger.info current_user
+    if current_user && (current_user.has_role? :admin)
+      redirect_to(admin_resources_path) && return
+    else
+      redirect_to(resources_path) && return
+    end
+  end
 
   # DELETE /resource/sign_out
   # def destroy
