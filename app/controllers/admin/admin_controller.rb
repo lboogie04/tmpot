@@ -1,5 +1,5 @@
 class Admin::AdminController < ApplicationController
-  before_filter :authenticate
+  before_action :authenticate
   # after_filter :attempt_log_action
   # layout :set_layout
 
