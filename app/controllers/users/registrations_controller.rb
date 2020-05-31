@@ -5,14 +5,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    return if current_user
+
+    redirect_to root_url
+  end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    Rails.logger.info "Creating User..."
+    @user = User.new(sign_up_params)
+    if @user.save
+      current_user.save
+      redirect_to root_path, success: "Your account has been created!"
+    end
+  end
 
   # GET /resource/edit
   # def edit
