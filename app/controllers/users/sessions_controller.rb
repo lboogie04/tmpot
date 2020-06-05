@@ -9,14 +9,16 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  def create
-    # super
+  def create 
+    self.resource = warden.authenticate!(auth_options)
+    sign_in(resource_name, resource)
+    yield resource if block_given?
     Rails.logger.info "Signing in..."
     Rails.logger.info current_user
     if current_user && (current_user.has_role? :admin)
-      redirect_to(admin_resources_path) && return
+      redirect_to admin_resources_path
     else
-      redirect_to(resources_path) && return
+      redirect_to resources_path
     end
   end
 

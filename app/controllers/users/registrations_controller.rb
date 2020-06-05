@@ -14,8 +14,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     Rails.logger.info "Creating User..."
     @user = User.new(sign_up_params)
     if @user.save
-      current_user.save
-      redirect_to root_path, success: "Your account has been created!"
+      redirect_to resources_path
+      #redirect_to root_path, success: "Your account has been created!"
     end
   end
 
