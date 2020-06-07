@@ -1,0 +1,67 @@
+<%= form_with(model: resource, local: true) do |form| %>
+  <% if resource.errors.any? %>
+    <div id="error_explanation" class="border-red-400 p-4 rounded border bg-red-200 mb-6">
+      <h2 class="text-sm heading text-red"><%= pluralize(resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
+
+      <ul class="text-sm mt-2 text-red-500 pl-4">
+      <% resource.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+
+  <% end %>
+
+  
+  <hr class="border border-gray-400 my-4"/>
+
+  <div class="pb-10">
+    <nav class="border-box">
+      <ul id="nav-tab" class="tabs list-reset flex flex-wrap justify-between">
+
+        <li class="active w-1/3 text-center cursor-pointer active" data-tab="text">
+          <%= link_to "#text", class: "tab tab-first" do %>
+            <%= render_svg 'icons/text' %> Text
+          <% end %>
+        </li>
+
+        <li class="w-1/3 text-center cursor-pointer" data-tab="image_video">
+          <%= link_to  "#image_video", class: "tab" do %>
+             <%= render_svg 'icons/image' %> PDF
+          <% end %>
+        </li>
+
+        <li class="w-1/3 text-center cursor-pointer" data-tab="url">
+          <%= link_to "#link", class: "tab tab-last"  do %>
+            <%= render_svg 'icons/link' %> Link(Soon)
+          <% end %>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="mb-6 text">
+    <%= form.label :name, class:"label" %>
+    <%= form.text_field :name, class:"input"  %>
+  </div>
+
+  <div class="image_video">
+    <div class="mb-6">
+      <%= form.label :name, class:"label" %>
+      <%= form.text_field :name, class:"input"  %>
+      <%= form.label :file, class: "label" %>
+      <label class="btn btn-white btn-small inline-flex items-center">
+        <%= render_svg 'icons/image', styles: "fill-current text-gray-600 mr-2" %> Upload PDF
+        <%= form.file_field :file, class: "hidden" %>
+      </label>
+    </div>
+  </div>
+
+  <div class="mb-6 url">
+    <%= form.label :name, class: "label" %>
+  </div>
+
+  <div class="mb-6">
+    <%= form.submit class: "btn btn-purple" %>
+  </div>
+<% end %>
