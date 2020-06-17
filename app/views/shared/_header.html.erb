@@ -13,12 +13,8 @@
 <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
   <% if current_user && (current_user.has_role? :admin) %>
     <div class="text-sm lg:flex-grow">
-      <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-        Resources
-      </a>
-      <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
-        Students
-      </a>
+      <%= link_to "Resources", admin_resources_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" %>
+      <%= link_to "Students", admin_users_path, class: "block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4" %>
     </div>
   <% end %>
   <div>

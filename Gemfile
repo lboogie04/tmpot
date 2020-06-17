@@ -18,6 +18,9 @@ gem 'rolify'
 
 gem 'inline_svg'
 
+gem "aws-sdk-s3", require: false
+gem 'mini_magick', '~> 4.8'
+
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
