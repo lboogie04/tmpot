@@ -1,0 +1,54 @@
+<%= form_with(model: @user, local: true) do |form| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+<div class="flex flex-wrap -mx-3 mb-6">
+<div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+  <div class="field">
+    <%= form.label :first_name, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
+    <%= form.text_field :first_name, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
+  </div>
+  </div>
+
+  <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+  <div class="field">
+    <%= form.label :last_name, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
+    <%= form.text_field :last_name, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %>
+  </div>
+  </div>
+</div>
+
+
+<div class="flex flex-wrap -mx-3 mb-6">
+<div class="w-full px-3">
+  <div class="field">
+    <%= form.label :email, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
+    <%= form.text_field :email, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"  %>
+  </div>
+  </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :activated, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
+    <%= form.check_box :activated %>
+  </div>
+
+
+  <div class="md:flex md:items-center">
+    <div class="md:w-2/3">
+  <div class="">
+    <%= form.submit class: "btn btn-purple" %>
+  </div>
+  </div>
+  </div>
+<% end %>

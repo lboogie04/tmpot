@@ -4,4 +4,7 @@ class Admin::UsersController < Admin::AdminController
     @users = User.all
   end
 
+  def edit
+  end
+
 end

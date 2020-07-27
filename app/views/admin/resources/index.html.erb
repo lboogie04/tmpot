@@ -1,10 +1,11 @@
-<h1>Hello from Admin</h1>
-
+<h1>Add a New Resource</h1>
+<br/><br/>
 <%= form_with model: @resource, local: true do |form| %>
-  <%= form.text_field :name, placeholder: "Name" %><br>
+  <%= form.label :name, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
+  <%= form.text_field :name, placeholder: "Name", class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" %><br>
 
   <%= form.file_field :file, multiple: true %><br>
-  <%= form.submit %>
+  <%= form.submit class: "btn btn-purple"%>
 <% end %>
 
 <hr />

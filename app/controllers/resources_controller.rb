@@ -1,6 +1,8 @@
 class ResourcesController < ApplicationController
+  before_action :authenticate
 
   def index
+    Rails.logger.info current_user
   end
 
 
